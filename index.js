@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const campinn = require('./models/campinn');
 
 mongoose.connect('mongodb://localhost:27017/camp-inn', {
     useNewUrlParser: true,
@@ -29,6 +30,11 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
+app.get('/campinn',async (req, res) => {
+    const camp = new campinn({ title: 'My backyard', description: 'cheap offer' });
+    await camp.save(); 
+    res.send(camp)
+});
 
 app.listen(3000, () => {
     console.log('server is running');
