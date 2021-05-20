@@ -34,7 +34,10 @@ app.get('/campinns', async (req, res) => {
   res.render('campinns/index', { campinns })
 });
 
-app.get
+app.get('/campinns/:id', async (req, res) => {
+  const campinn = await Campinn.findById(req.params.id)
+  res.render('campinns/show', {campinn})
+});
 
 
 app.listen(3000, () => {
