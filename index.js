@@ -1,21 +1,19 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const campinn = require('./models/campinn');
+const Campinn = require('./models/campinn');
 
 mongoose.connect('mongodb://localhost:27017/camp-inn', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error;"));
+db.on("error", console.error.bind("connection error;"));
 db.once("open", () => {
-    console.log("database connected");
-    
+  console.log("database connected");
 });
-
 
 
 
@@ -27,16 +25,18 @@ app.set('views', path.join(__dirname, 'views'))
 
 
 app.get('/', (req, res) => {
-    res.render('home')
+  res.render('home')
 });
 
-app.get('/campinn',async (req, res) => {
-    const camp = new campinn({ title: 'My backyard', description: 'cheap offer' });
-    await camp.save(); 
-    res.send(camp)
+
+app.get('/campinns', async (req, res) => {
+  const campinns = await Campinn.find({});
+  res.render('campinns/index', { campinns })
 });
+
+app.get
+
 
 app.listen(3000, () => {
-    console.log('server is running');
-
-})
+  console.log('server is running at port 3000');
+});
