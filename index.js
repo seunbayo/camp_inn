@@ -36,9 +36,8 @@ app.get('/campinns', async (req, res) => {
 
 app.get('/campinns/:id', async (req, res) => {
   const campinn = await Campinn.findById(req.params.id)
-  res.render('campinns/show', {campinn})
+  res.render('campinns/show', { campinn });
 });
-
 
 app.listen(3000, () => {
   console.log('server is running at port 3000');
