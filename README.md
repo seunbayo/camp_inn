@@ -1,17 +1,9 @@
 # camp_inn
 
-  for (let i = 0; i < 300; i++) {
-    const random1000 = Math.floor(Math.random() * 1000);
-    const camp = new Campinn({
-
-      location: `${cities[random1000].city}, ${cities[random1000].state}`,
-      title: `${sample(descriptors)} ${sample(places)}`,
-    })
-    await camp.save();
-  }
+This app can be used to find the list of all tourist attraction centers in Nigeria,their ratings and the popularity.
 
   .then(() => {
     mongoose.connection.close();
   });
 
-const sample = array => array[Math.floor(Math.random() * array.length)];
+
