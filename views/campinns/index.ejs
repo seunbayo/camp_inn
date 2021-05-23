@@ -8,6 +8,9 @@
 <body>
 
     <h1>ALL CAMPINN</h1>
+    <div>
+        <a href="/campinns/new">Add campinn</a>
+    </div>
     <ul>
         <% for (let campinn of campinns ) {%>
             <li> <a href="/campinns/<%=campinn._id%>"><%= campinn.title %></a>  </li>

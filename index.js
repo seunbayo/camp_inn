@@ -23,6 +23,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 
+app.use(express.urlencoded({ extended: true }));
+
 
 app.get('/', (req, res) => {
   res.render('home')
@@ -37,6 +39,12 @@ app.get('/campinns', async (req, res) => {
 app.get('/campinns/new', (req, res) => {
   res.render('campinns/new')
 });
+
+app.post('/campinns', async (req, res) => {
+  const campinn = new Campinn(req.body.campinn);
+  await campinn.save();
+  res.redirect(`/campinns/${campinn._id}`)
+})
 
 app.get('/campinns/:id', async (req, res) => {
   const campinn = await Campinn.findById(req.params.id)
