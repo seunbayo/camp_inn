@@ -11,8 +11,17 @@
 
   <h1><%= campinn.title %></h1>
   <h2><%= campinn.location %></h2>
+  <p><a href="/campinns/<%=campinn._id %>/edit">Edit</a>
+  </p>
+  <p>
+    <form action="/campinns/<%=campinn._id %>?_method=DELETE" method="post">
+      <button>Delete</button>
+    </form>
+  </p>
+
   <footer>
     <a href="/campinns">All campinns</a>
+
   </footer>
 
 </body>
