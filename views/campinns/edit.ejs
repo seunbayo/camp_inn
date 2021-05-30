@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('layout/boilerplate') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit campinns</title>
-</head>
 
-<body>
+
     <h1>Edit CampInn</h1>
 
     <form action="/campinns/<%=campinn._id%>?_method=PUT " method="POST">
@@ -23,7 +17,3 @@
     </form>
 
     <a href="/campinns/<%= campinn._id%>">Back to campinn</a>
-
-</body>
-
-</html>
