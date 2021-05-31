@@ -24,10 +24,14 @@ const seedDB = async () => {
   await Campinn.deleteMany({});
   for (let i = 0; i < 300; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
+    const price = Math.floor(Math.random() * 20) + 10
     const camp = new Campinn({
 
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
+      image: 'https://source.unsplash.com/collection/8015019/',
+      description: 'lorem ispudnfm dit due asidfnv',
+      price: price 
     });
     await camp.save();
   }
