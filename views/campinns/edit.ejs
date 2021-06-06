@@ -4,31 +4,31 @@
 <div class="row">
   <h1 class="text-center">Edit campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campinns/<%=campinn._id%>?_method=PUT " method="POST">
+    <form action="/campinns/<%=campinn._id%>?_method=PUT " method="POST" novalidate class="validated-form">
 
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
-        <input class="form-control" type="text" name="campinn[title]" id="title" value="<%= campinn.title%>">
+        <input class="form-control" type="text" name="campinn[title]" id="title" value="<%= campinn.title%>" required>
       </div>
       <div class="mb-3  ">
         <label class="form-label" for="location">location</label>
-        <input class="form-control" type="text" name="campinn[location]" id="location" value="<%= campinn.location%>" >
+        <input class="form-control" type="text" name="campinn[location]" id="location" value="<%= campinn.location%>" required>
       </div>
       <div class="mb-3  ">
         <label class="form-label" for="image">Image Url</label>
-        <input class="form-control" type="text" name="campinn[image]" id="image" value="<%= campinn.image%>">
+        <input class="form-control" type="text" name="campinn[image]" id="image" value="<%= campinn.image%>" required>
       </div>
       <div class="mb-3  ">
         <label class="form-label" for="price">CampInn price</label>
         <div class="input-group">
           <span class="input-group-text" id="price-label">#</span>
           <input class="form-control" type="text" id="price" placeholder="0.00" aria-describedby="price-label"
-            aria-label="price" name="campinn[price]" value="<%= campinn.price%>">
+            aria-label="price" name="campinn[price]" value="<%= campinn.price%>" required>
         </div>
       </div>
       <div class="mb-3  ">
         <label class="form-label" for="description">Description</label>
-        <textarea class="form-control" type="text" name="campinn[description]" id="description"><%= campinn.description%> </textarea>
+        <textarea class="form-control" type="text" name="campinn[description]" id="description" required><%= campinn.description%> </textarea>
       </div>
       <div class="mb-3">
         <button class="btn btn-info">Update campinn</button>
