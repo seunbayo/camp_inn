@@ -1,20 +1,34 @@
 <% layout('layout/boilerplate') %>
 
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card mt-4">
+      <img src="<%= campinn.image %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= campinn.title %></h5>
+        <p class="card-text"><%= campinn.description %>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-muted"><%= campinn.location %></li>
+        <li class="list-group-item">#<%= campinn.price%>/night</li>
 
-  <h1><%= campinn.title %></h1>
-  <h2><%= campinn.location %></h2>
-  <img src="<%= campinn.image %>" alt="">
-  <p> <%= campinn.description %></p>
-  <p><a href="/campinns/<%=campinn._id %>/edit">Edit</a>
-  </p>
-  <p>
-    <form action="/campinns/<%=campinn._id %>?_method=DELETE" method="post">
-      <button>Delete</button>
-    </form>
-  </p>
+      </ul>
+      <div class="card-body">
+        <a class="card-link btn btn-info" href="/campinns/<%=campinn._id %>/edit">Edit</a>
 
-  <footer>
-    <a href="/campinns">All campinns</a>
+        <form class="d-inline" action="/campinns/<%=campinn._id %>?_method=DELETE" method="post">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
 
-  </footer>
+  </div>
+</div>
 
+
+
+<footer>
+  <a href="/campinns">All campinns</a>
+
+</footer>
