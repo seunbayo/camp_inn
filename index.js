@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./helpers/catchAsync');
+const expressError = require('./helpers/expressError');
 const methodOverride = require('method-override');
 const Campinn = require('./models/campinn');
 
@@ -45,6 +46,7 @@ app.get('/campinns/new', (req, res) => {
 });
 
 app.post('/campinns', catchAsync(async (req, res, next) => {
+  if(!req.body.campinn) throw new expressError('invalid campinn data', 400)
   const campinn = new Campinn(req.body.campinn);
   await campinn.save();
   res.redirect(`/campinns/${campinn._id}`)
@@ -73,8 +75,13 @@ app.delete('/campinns/:id', catchAsync(async (req, res) => {
   res.redirect('/campinns');
 }));
 
+app.all('*', (req, res, next) => {
+  next(new expressError('page not found', 404))
+})
+
 app.use((err, req, res, next) => {
-  res.send('somethins is wrong')
+  const { statusCode = 500, message = "something went wrong" } = err;
+  res.status(statusCode).send(message)
 })
 
 
